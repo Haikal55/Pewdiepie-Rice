@@ -10,7 +10,7 @@
 
 window#waybar {
   background-color: #2c3238;
-  border: 3px solid #6aa8d6;
+  border: 3px solid #77c9ff;
 }
 
 /* Animations */
@@ -48,7 +48,7 @@ window#waybar {
 /* Main modules styling */
 #clock, #battery, #power-profiles-daemon, #backlight,
 #network, #pulseaudio, #custom-power, #bluetooth, #custom-mic {
-  border: 2px solid #6aa8d6;
+  border: 2px solid #77c9ff;
   background-color: #2c3238;
   margin: 7px;
   min-width: 60px;
@@ -66,15 +66,13 @@ window#waybar {
 }
 
 /* Colors for specific modules */
-#clock, #battery, #pulseaudio, #custom-mic {
-  color: #EEB18D;
+#power-profiles-daemon.balanced, #clock, #battery, #pulseaudio, #custom-mic {
+  color: #ffbb93;
 }
 #power-profiles-daemon.performance {
   color: #f53c3c;
 }
-#power-profiles-daemon.balanced {
-  color: #EEB18D;
-}
+
 #network, #custom-power, #bluetooth, #workspaces button {
   color: #a6dae2;
 }
