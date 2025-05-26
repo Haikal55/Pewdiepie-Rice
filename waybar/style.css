@@ -2,7 +2,7 @@
   border: none;
   border-radius: 2px;
   min-height: 0;
-  font-family: "Iosevka Nerd Font", "monospace";
+  font-family: "Iosevka Nerd Font", "JetBrains Mono";
   font-weight: 500;
   font-size: 14px;
   padding: 0;
@@ -55,7 +55,6 @@ window#waybar {
   padding: 6px 5px;
   border-radius: 2px;
   transition: background-color 0.3s ease;
-  letter-spacing: 1px;
 }
 
 /* Hover effect for main modules */
