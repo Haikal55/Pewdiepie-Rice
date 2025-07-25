@@ -1,5 +1,5 @@
 configuration {
-    dpi: 180;
+    dpi: 90;
     modi: "drun,run,filebrowser,window";
     show-icons: true;
     drun-display-format: "{name}";
@@ -8,18 +8,18 @@ configuration {
 
 * {
     font: "JetBrains Mono Light 12";
-    background: #2c3238;
-    foreground: #ffbb93;
-    selected: rgba(0,0,0,0.45);
-    active: #00CCF5;
-    urgent: #8D0083;
-    border: #77c9ff;
+    background: #1a1a1a;
+    foreground: #e0e0e0;
+    selected: rgba(0, 100, 120, 0.5);
+    active: #00e0ff;
+    urgent: #ff4500;
+    border: #00e0ff;
 }
 
 window {
     border-color: @border;
-    border:  4px;
-    border-radius: 2px; 
+    border:  2px;
+    border-radius: 0px;
     location: center;
     anchor: center;
     fullscreen: false;
@@ -32,13 +32,14 @@ window {
 mainbox {
     orientation: horizontal;
     children: [ "imagebox", "listbox" ];
+    background-color: @background;
 }
 
 imagebox {
-    width: 1px;
+    width: 15em;
     background-color: transparent;
-    background-image: url("~/.config/rofi/bg.jpg", height);
-    children: [ "dummy" ];  /* nothing interactive here */
+    background-image: url("~/.config/rofi/launchers/misc/bg.jpg", height);
+    children: [ "dummy" ];
 }
 
 dummy {
@@ -47,31 +48,46 @@ dummy {
 
 listbox {
     children: [ "inputbar", "message", "listview" ];
+    background-color: @background;
 }
 
-/* Search bar (now in listbox on right) */
+/* Search bar (inputbar) */
 inputbar {
     spacing: 0px;
-    padding:15px;
-    background-color: transparent;
+    padding: 10px 15px; /* Padding ini menentukan jarak dari border inputbar ke teks */
+    background-color: @background;
     text-color: @foreground;
-    children: [ "textbox-prompt-colon", "entry" ];
+    children: [ "entry" ]; /* Hanya menyisakan "entry" di sini */
+    border: 1px;
+    border-color: @active;
+    border-radius: 4px;
+    margin: 10px;
 }
 
+/* Blok textbox-prompt-colon bisa dihapus seluruhnya jika tidak digunakan */
+/*
 textbox-prompt-colon {
     str: "";
+    background-color: transparent;
+    text-color: @foreground;
 }
+*/
 
 entry {
-    placeholder: "";
+    placeholder: "Search...";
+    background-color: transparent;
+    text-color: @foreground;
+    expand: true;
+    vertical-align: 0.5; /* Pertahankan ini untuk menengahkan teks secara vertikal */
+    horizontal-align: 0.0; /* Ini harusnya memastikan kursor rata kiri */
 }
 
-/* App list */
-listview { 
+/* App list (listview) */
+listview {
     scrollbar: false;
-    spacing: 10px;
+    spacing: 5px;
     layout: vertical;
-    background-color: transparent;
+    background-color: @background;
     text-color: @foreground;
     border: 0px;
     padding: 10px;
@@ -79,23 +95,24 @@ listview {
 
     /* List elements */
 element {
-    padding: 35px;
-    background-color: transparent;
+    padding: 10px 15px;
+    background-color: @background;
     text-color: @foreground;
     cursor: pointer;
+    border-radius: 0px;
 }
 
-element selected.normal { 
+element selected.normal {
     background-color: @selected;
-    text-color: @foreground;
+    text-color: @active;
 }
 
 element-icon {
-    size: 32px;
+    size: 24px;
     background-color: transparent;
     text-color: inherit;
     cursor: inherit;
-    margin: 0 30px 0 15px;
+    margin: 0 15px 0 0;
 }
 
 element-text {
